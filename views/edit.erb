@@ -1,0 +1,10 @@
+<form method="post" action="/patch/<%= @id %>">
+  <p>タイトル<br>
+    <input id="title" type="text" name="edited_title" value="<%= @title %>">
+  </p>
+  <p>ないよう:<br>
+    <textarea id="textarea" name="edited_content" rows="6" col="50"><%= @content %></textarea>
+  </p>
+  <input type="hidden" name="_method" value="PATCH">
+  <input id="submit-button" type="submit" value="変更">
+</form>

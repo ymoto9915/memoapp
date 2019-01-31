@@ -1,0 +1,16 @@
+<div>
+  <h2>
+    <%= @title %>
+  </h2>
+  <h2>
+    <%= @content %>
+  </h2>
+</div>
+<div class="button">
+  <form method="get" action="/edit/<%= @id %>">
+    <input id="submit-button" type="submit" value="変更">
+  </form>
+  <form method="get" action="/confirm/<%= @id %>">
+    <input id="submit-button" type="submit" value="削除">
+  </form>
+</div>
