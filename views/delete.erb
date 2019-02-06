@@ -1,6 +1,6 @@
 <h2>本当に消しますか?</h2>
 <div class="button">
-  <form method="post" action="/delete/<%= @id %>">
+  <form method="post" action="/<%= @id %>">
     <input type="hidden" name="_method" value="DELETE">
     <input id="submit-button" type="submit" value="消す">
   </form>

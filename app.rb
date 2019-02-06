@@ -12,7 +12,7 @@ get "/" do
     hash = JSON.parse(json)
     @id = hash["id"]
     @title = hash["title"]
-    title = "<a href=show/#{@id}>#{@title}</a>"
+    title = "<a href=/#{@id}>#{@title}</a>"
     @titles << title
   end
   erb :index
@@ -44,7 +44,7 @@ post "/new" do
   end
 end
 
-get "/show/:id" do
+get "/:id" do
   json = open("memos/memo-#{params[:id]}.json").read
   hash = JSON.parse(json)
   @content = hash["content"]
@@ -62,7 +62,7 @@ get "/edit/:id" do
   erb :edit
 end
 
-patch "/patch/:id" do
+patch "/:id" do
   @id = params[:id]
   if params[:edited_content] == ""
     @content_or_title = "ないよう"
@@ -80,16 +80,16 @@ patch "/patch/:id" do
     open(path, "w") do |io|
       JSON.dump(json, io)
     end
-    redirect "/show/#{@id}"
+    redirect "/#{@id}"
   end
 end
 
-get "/confirm/:id" do
+get "/confirmation/:id" do
   @id = params[:id]
   erb :delete
 end
 
-delete "/delete/:id" do
+delete "/:id" do
   path = "memos/memo-#{params[:id]}.json"
   File.delete(path)
   redirect "/"
