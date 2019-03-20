@@ -32,7 +32,7 @@ post "/new" do
   else
     @id = SecureRandom.uuid
     @title = params[:title]
-    @content = params[:content]
+    @content = params[:content].gsub(/\R/, "<br/>")
     File.open("memos/memo-#{@id}.json", "w") do |file|
       hash = {
         "id" => @id,
